@@ -148,8 +148,9 @@ export default class Camera extends Component {
     this._addOnBarCodeReadListener()
 
     let { captureMode } = convertNativeProps({ captureMode: this.props.captureMode })
-    let hasVideoAndAudio = this.props.captureAudio && captureMode === Camera.constants.CaptureMode.video
-    let check = hasVideoAndAudio ? Camera.checkDeviceAuthorizationStatus : Camera.checkVideoAuthorizationStatus;
+    // let hasVideoAndAudio = this.props.captureAudio && captureMode === Camera.constants.CaptureMode.video
+    // let check = hasVideoAndAudio ? Camera.checkDeviceAuthorizationStatus : Camera.checkVideoAuthorizationStatus;
+    let check = this.props.captureAudio ? Camera.checkDeviceAuthorizationStatus : Camera.checkVideoAuthorizationStatus;
 
     if (check) {
       const isAuthorized = await check();
